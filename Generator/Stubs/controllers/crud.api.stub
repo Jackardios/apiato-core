@@ -18,7 +18,7 @@ use Illuminate\Http\JsonResponse;
 
 class {{class-name}} extends {{base-controller}}
 {
-    public function view{{model}}ById(View{{model}}Request $request, {{model}} ${{entity}}): array
+    public function view{{model}}(View{{model}}Request $request, {{model}} ${{entity}}): array
     {
         ${{entity}} = app(View{{model}}Action::class)->run($request, ${{entity}});
         return $this->transform(${{entity}}, {{model}}Transformer::class);
