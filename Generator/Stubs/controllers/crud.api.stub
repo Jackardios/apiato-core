@@ -13,6 +13,7 @@ use App\Containers\{{section-name}}\{{container-name}}\Actions\View{{model}}Acti
 use App\Containers\{{section-name}}\{{container-name}}\Actions\List{{models}}Action;
 use App\Containers\{{section-name}}\{{container-name}}\Actions\Update{{model}}Action;
 use App\Containers\{{section-name}}\{{container-name}}\Actions\Delete{{model}}Action;
+use App\Containers\{{section-name}}\{{container-name}}\Models\{{model}};
 use App\Ship\Parents\Controllers\{{base-controller}};
 use Illuminate\Http\JsonResponse;
 
