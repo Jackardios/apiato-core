@@ -11,29 +11,43 @@ use Symfony\Component\Console\Input\InputOption;
 class ModelGenerator extends GeneratorCommand implements ComponentsGenerator
 {
     /**
+     * User required/optional inputs expected to be passed while calling the command.
+     * This is a replacement of the `getArguments` function "which reads whenever it's called".
+     *
+     * @var  array
+     */
+    public array $inputs = [
+    ];
+
+    /**
      * The console command name.
      *
      * @var string
      */
     protected $name = 'apiato:generate:model';
+
     /**
      * The console command description.
      *
      * @var string
      */
     protected $description = 'Create a new Model class';
+
     /**
      * The type of class being generated.
      */
     protected string $fileType = 'Model';
+
     /**
      * The structure of the file path.
      */
     protected string $pathStructure = '{section-name}/{container-name}/Models/*';
+
     /**
      * The structure of the file name.
      */
     protected string $nameStructure = '{file-name}';
+
     /**
      * The name of the stub file.
      */
