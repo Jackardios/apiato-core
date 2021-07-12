@@ -2,12 +2,8 @@
 
 namespace Apiato\Core\Abstracts\Actions;
 
-use Apiato\Core\Traits\HasRequestCriteriaTrait;
-
 abstract class Action
 {
-    use HasRequestCriteriaTrait;
-
     protected string $ui;
 
     public function getUI()
