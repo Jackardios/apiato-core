@@ -151,7 +151,7 @@ class ContainerApiGenerator extends GeneratorCommand implements ComponentsGenera
             [
                 'stub' => 'List',
                 'name' => 'List' . $models,
-                'operation' => 'list' . $models,
+                'operation' => 'list',
                 'verb' => 'GET',
                 'url' => $url,
                 'action' => 'List' . $models . 'Action',
@@ -161,7 +161,7 @@ class ContainerApiGenerator extends GeneratorCommand implements ComponentsGenera
             [
                 'stub' => 'View',
                 'name' => 'View' . $model,
-                'operation' => 'view' . $model,
+                'operation' => 'view',
                 'verb' => 'GET',
                 'url' => $url . '/{' . $modelRouteKey . '}',
                 'action' => 'View' . $model . 'Action',
@@ -171,7 +171,7 @@ class ContainerApiGenerator extends GeneratorCommand implements ComponentsGenera
             [
                 'stub' => 'Create',
                 'name' => 'Create' . $model,
-                'operation' => 'create' . $model,
+                'operation' => 'create',
                 'verb' => 'POST',
                 'url' => $url,
                 'action' => 'Create' . $model . 'Action',
@@ -181,7 +181,7 @@ class ContainerApiGenerator extends GeneratorCommand implements ComponentsGenera
             [
                 'stub' => 'Update',
                 'name' => 'Update' . $model,
-                'operation' => 'update' . $model,
+                'operation' => 'update',
                 'verb' => 'PATCH',
                 'url' => $url . '/{' . $modelRouteKey . '}',
                 'action' => 'Update' . $model . 'Action',
@@ -191,7 +191,7 @@ class ContainerApiGenerator extends GeneratorCommand implements ComponentsGenera
             [
                 'stub' => 'Delete',
                 'name' => 'Delete' . $model,
-                'operation' => 'delete' . $model,
+                'operation' => 'delete',
                 'verb' => 'DELETE',
                 'url' => $url . '/{' . $modelRouteKey . '}',
                 'action' => 'Delete' . $model . 'Action',
