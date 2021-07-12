@@ -64,7 +64,7 @@ class ActionGenerator extends GeneratorCommand implements ComponentsGenerator
         $stub = Str::lower($this->checkParameterOrChoice(
             'stub',
             'Select the Stub you want to load',
-            ['Generic', 'GetAll', 'Find', 'Create', 'Update', 'Delete'],
+            ['Generic', 'List', 'View', 'Create', 'Update', 'Delete'],
             0)
         );
 
