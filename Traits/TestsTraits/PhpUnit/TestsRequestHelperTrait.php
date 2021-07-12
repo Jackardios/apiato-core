@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Illuminate\Testing\TestResponse;
 use stdClass;
-use Vinkla\Hashids\Facades\Hashids;
 
 trait TestsRequestHelperTrait
 {
@@ -184,18 +183,12 @@ trait TestsRequestHelperTrait
      *
      * @return  $this
      */
-    public function injectId($id, $skipEncoding = false, $replace = '{id}'): self
+    public function injectId($id, $replace = '{id}'): self
     {
         // In case Hash ID is enabled it will encode the ID first
-        $id = $this->hashEndpointId($id, $skipEncoding);
         $this->endpoint = str_replace($replace, $id, $this->endpoint);
 
         return $this;
-    }
-
-    private function hashEndpointId($id, $skipEncoding = false): string
-    {
-        return (Config::get('apiato.hash-id') && !$skipEncoding) ? Hashids::encode($id) : $id;
     }
 
     /**

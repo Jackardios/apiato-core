@@ -104,7 +104,7 @@ class TransformerGenerator extends GeneratorCommand implements ComponentsGenerat
         }
 
         $fields = array_merge($fields, [
-            'id' => '$' . $_model . '->getHashedKey()',
+            'id' => '$' . $_model . '->getKey()',
             'created_at' => '$' . $_model . '->created_at',
             'updated_at' => '$' . $_model . '->updated_at',
             'readable_created_at' => '$' . $_model . '->created_at->diffForHumans()',

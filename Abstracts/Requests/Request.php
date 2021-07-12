@@ -2,7 +2,6 @@
 
 namespace Apiato\Core\Abstracts\Requests;
 
-use Apiato\Core\Traits\HashIdTrait;
 use Apiato\Core\Traits\SanitizerTrait;
 use Apiato\Core\Traits\StateKeeperTrait;
 use Illuminate\Support\Facades\App;
@@ -20,7 +19,6 @@ use Illuminate\Support\Facades\Config;
  */
 abstract class Request extends LaravelRequest
 {
-    use HashIdTrait;
     use StateKeeperTrait;
     use SanitizerTrait;
 
@@ -174,8 +172,6 @@ abstract class Request extends LaravelRequest
         $requestData = parent::all($keys);
 
         $requestData = $this->mergeUrlParametersWithRequestData($requestData);
-
-        $requestData = $this->decodeHashedIdsBeforeValidation($requestData);
 
         return $requestData;
     }

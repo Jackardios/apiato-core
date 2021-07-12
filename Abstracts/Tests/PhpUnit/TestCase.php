@@ -2,7 +2,6 @@
 
 namespace Apiato\Core\Abstracts\Tests\PhpUnit;
 
-use Apiato\Core\Traits\HashIdTrait;
 use Apiato\Core\Traits\TestCaseTrait;
 use Apiato\Core\Traits\TestsTraits\PhpUnit\TestsAuthHelperTrait;
 use Apiato\Core\Traits\TestsTraits\PhpUnit\TestsMockHelperTrait;
@@ -20,7 +19,6 @@ abstract class TestCase extends LaravelTestCase
         TestsResponseHelperTrait,
         TestsMockHelperTrait,
         TestsAuthHelperTrait,
-        HashIdTrait,
         RefreshDatabase;
 
     /**

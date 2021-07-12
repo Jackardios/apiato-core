@@ -140,7 +140,7 @@ trait ResponseTrait
             return $this->accepted();
         }
 
-        $id = $responseArray->getHashedKey();
+        $id = $responseArray->getKey();
         $className = (new ReflectionClass($responseArray))->getShortName();
 
         return $this->accepted([
