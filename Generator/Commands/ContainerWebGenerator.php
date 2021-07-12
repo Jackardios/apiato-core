@@ -142,7 +142,7 @@ class ContainerWebGenerator extends GeneratorCommand implements ComponentsGenera
             [
                 'stub' => 'List',
                 'name' => 'List' . $models,
-                'operation' => 'list',
+                'operation' => 'list' . $model,
                 'verb' => 'GET',
                 'url' => $url,
                 'action' => 'List' . $models . 'Action',
@@ -152,7 +152,7 @@ class ContainerWebGenerator extends GeneratorCommand implements ComponentsGenera
             [
                 'stub' => 'View',
                 'name' => 'View' . $model,
-                'operation' => 'view',
+                'operation' => 'view' . $model,
                 'verb' => 'GET',
                 'url' => $url . '/{' . $modelRouteKey . '}',
                 'action' => 'View' . $model . 'Action',
@@ -162,7 +162,7 @@ class ContainerWebGenerator extends GeneratorCommand implements ComponentsGenera
             [
                 'stub' => null,
                 'name' => 'Create' . $model,
-                'operation' => 'create',
+                'operation' => 'create' . $model,
                 'verb' => 'GET',
                 'url' => $url . '/create',
                 'action' => null,
@@ -172,7 +172,7 @@ class ContainerWebGenerator extends GeneratorCommand implements ComponentsGenera
             [
                 'stub' => 'Create',
                 'name' => 'Store' . $model,
-                'operation' => 'store',
+                'operation' => 'store' . $model,
                 'verb' => 'POST',
                 'url' => $url . '/store',
                 'action' => 'Create' . $model . 'Action',
@@ -182,7 +182,7 @@ class ContainerWebGenerator extends GeneratorCommand implements ComponentsGenera
             [
                 'stub' => null,
                 'name' => 'Edit' . $model,
-                'operation' => 'edit',
+                'operation' => 'edit' . $model,
                 'verb' => 'GET',
                 'url' => $url . '/{' . $modelRouteKey . '}/edit',
                 'action' => null,
@@ -192,7 +192,7 @@ class ContainerWebGenerator extends GeneratorCommand implements ComponentsGenera
             [
                 'stub' => 'Update',
                 'name' => 'Update' . $model,
-                'operation' => 'update',
+                'operation' => 'update' . $model,
                 'verb' => 'PATCH',
                 'url' => $url . '/{' . $modelRouteKey . '}',
                 'action' => 'Update' . $model . 'Action',
@@ -202,7 +202,7 @@ class ContainerWebGenerator extends GeneratorCommand implements ComponentsGenera
             [
                 'stub' => 'Delete',
                 'name' => 'Delete' . $model,
-                'operation' => 'destroy',
+                'operation' => 'destroy' . $model,
                 'verb' => 'DELETE',
                 'url' => $url . '/{' . $modelRouteKey . '}',
                 'action' => 'Delete' . $model . 'Action',
