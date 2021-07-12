@@ -28,7 +28,6 @@ class {{class-name}} extends Transformer
         ];
 
         $response = $this->ifAdmin([
-            'real_id'    => ${{entity}}->getKey(),
             // 'deleted_at' => ${{entity}}->deleted_at,
         ], $response);
 
