@@ -18,33 +18,39 @@ class MigrationGenerator extends GeneratorCommand implements ComponentsGenerator
      *
      * @var  array
      */
-    public $inputs = [
+    public array $inputs = [
         ['tablename', null, InputOption::VALUE_OPTIONAL, 'The name for the database table'],
     ];
+
     /**
      * The console command name.
      *
      * @var string
      */
     protected $name = 'apiato:generate:migration';
+
     /**
      * The console command description.
      *
      * @var string
      */
     protected $description = 'Create an "empty" migration file for a Container';
+
     /**
      * The type of class being generated.
      */
     protected string $fileType = 'Migration';
+
     /**
      * The structure of the file path.
      */
     protected string $pathStructure = '{section-name}/{container-name}/Data/Migrations/*';
+
     /**
      * The structure of the file name.
      */
     protected string $nameStructure = '{date}_{file-name}';
+
     /**
      * The name of the stub file.
      */

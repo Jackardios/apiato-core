@@ -14,32 +14,38 @@ class SeederGenerator extends GeneratorCommand implements ComponentsGenerator
      *
      * @var  array
      */
-    public $inputs = [
+    public array $inputs = [
     ];
+
     /**
      * The console command name.
      *
      * @var string
      */
     protected $name = 'apiato:generate:seeder';
+
     /**
      * The console command description.
      *
      * @var string
      */
     protected $description = 'Create a new Seeder class';
+
     /**
      * The type of class being generated.
      */
     protected string $fileType = 'Seeder';
+
     /**
      * The structure of the file path.
      */
     protected string $pathStructure = '{section-name}/{container-name}/Data/Seeders/*';
+
     /**
      * The structure of the file name.
      */
     protected string $nameStructure = '{file-name}';
+
     /**
      * The name of the stub file.
      */

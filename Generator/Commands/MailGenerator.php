@@ -15,33 +15,39 @@ class MailGenerator extends GeneratorCommand implements ComponentsGenerator
      *
      * @var  array
      */
-    public $inputs = [
+    public array $inputs = [
         ['view', null, InputOption::VALUE_OPTIONAL, 'The name of the view (blade template) to be loaded.'],
     ];
+
     /**
      * The console command name.
      *
      * @var string
      */
     protected $name = 'apiato:generate:mail';
+
     /**
      * The console command description.
      *
      * @var string
      */
     protected $description = 'Create a new Mail class';
+
     /**
      * The type of class being generated.
      */
     protected string $fileType = 'Mail';
+
     /**
      * The structure of the file path.
      */
     protected string $pathStructure = '{section-name}/{container-name}/Mails/*';
+
     /**
      * The structure of the file name.
      */
     protected string $nameStructure = '{file-name}';
+
     /**
      * The name of the stub file.
      */

@@ -16,36 +16,42 @@ class ContainerGenerator extends GeneratorCommand implements ComponentsGenerator
     public array $inputs = [
         ['ui', null, InputOption::VALUE_OPTIONAL, 'The user-interface to generate the Controller for.'],
     ];
+
     /**
      * The console command name.
      *
      * @var string
      */
     protected $name = 'apiato:generate:container';
+
     /**
      * The console command description.
      *
      * @var string
      */
     protected $description = 'Create a Container for apiato from scratch';
+
     /**
      * The type of class being generated.
      *
      * @var string
      */
     protected string $fileType = 'Container';
+
     /**
      * The structure of the file path.
      *
      * @var  string
      */
     protected string $pathStructure = '{section-name}/{container-name}/*';
+
     /**
      * The structure of the file name.
      *
      * @var  string
      */
     protected string $nameStructure = '{file-name}';
+
     /**
      * The name of the stub file.
      *

@@ -15,33 +15,39 @@ class TestFunctionalTestGenerator extends GeneratorCommand implements Components
      *
      * @var  array
      */
-    public $inputs = [
+    public array $inputs = [
         ['ui', null, InputOption::VALUE_OPTIONAL, 'The user-interface to generate the Test for.'],
     ];
+
     /**
      * The console command name.
      *
      * @var string
      */
     protected $name = 'apiato:generate:test:functional';
+
     /**
      * The console command description.
      *
      * @var string
      */
     protected $description = 'Create a Functional Test file.';
+
     /**
      * The type of class being generated.
      */
     protected string $fileType = 'Functional Test';
+
     /**
      * The structure of the file path.
      */
     protected string $pathStructure = '{section-name}/{container-name}/UI/{user-interface}/Tests/Functional/*';
+
     /**
      * The structure of the file name.
      */
     protected string $nameStructure = '{file-name}';
+
     /**
      * The name of the stub file.
      */

@@ -14,32 +14,38 @@ class SubActionGenerator extends GeneratorCommand implements ComponentsGenerator
      *
      * @var  array
      */
-    public $inputs = [
+    public array $inputs = [
     ];
+
     /**
      * The console command name.
      *
      * @var string
      */
     protected $name = 'apiato:generate:subaction';
+
     /**
      * The console command description.
      *
      * @var string
      */
     protected $description = 'Create a new SubAction class';
+
     /**
      * The type of class being generated.
      */
     protected string $fileType = 'SubAction';
+
     /**
      * The structure of the file path.
      */
     protected string $pathStructure = '{section-name}/{container-name}/Actions/*';
+
     /**
      * The structure of the file name.
      */
     protected string $nameStructure = '{file-name}';
+
     /**
      * The name of the stub file.
      */

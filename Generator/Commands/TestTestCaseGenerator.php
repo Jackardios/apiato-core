@@ -15,7 +15,7 @@ class TestTestCaseGenerator extends GeneratorCommand implements ComponentsGenera
      *
      * @var  array
      */
-    public $inputs = [
+    public array $inputs = [
         ['ui', null, InputOption::VALUE_OPTIONAL, 'The user-interface to generate the TestCase for.'],
     ];
     /**
@@ -38,10 +38,12 @@ class TestTestCaseGenerator extends GeneratorCommand implements ComponentsGenera
      * The structure of the file path.
      */
     protected string $pathStructure = '{section-name}/{container-name}/Tests/*';
+
     /**
      * The structure of the file name.
      */
     protected string $nameStructure = '{file-name}';
+
     /**
      * The name of the stub file.
      */

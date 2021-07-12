@@ -15,33 +15,39 @@ class ServiceProviderGenerator extends GeneratorCommand implements ComponentsGen
      *
      * @var  array
      */
-    public $inputs = [
+    public array $inputs = [
         ['stub', null, InputOption::VALUE_OPTIONAL, 'The stub file to load for this generator.'],
     ];
+
     /**
      * The console command name.
      *
      * @var string
      */
     protected $name = 'apiato:generate:serviceprovider';
+
     /**
      * The console command description.
      *
      * @var string
      */
     protected $description = 'Create a ServiceProvider for a Container';
+
     /**
      * The type of class being generated.
      */
     protected string $fileType = 'ServiceProvider';
+
     /**
      * The structure of the file path.
      */
     protected string $pathStructure = '{section-name}/{container-name}/Providers/*';
+
     /**
      * The structure of the file name.
      */
     protected string $nameStructure = '{file-name}';
+
     /**
      * The name of the stub file.
      */

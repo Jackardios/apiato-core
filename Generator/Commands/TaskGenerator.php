@@ -16,34 +16,40 @@ class TaskGenerator extends GeneratorCommand implements ComponentsGenerator
      *
      * @var  array
      */
-    public $inputs = [
+    public array $inputs = [
         ['model', null, InputOption::VALUE_OPTIONAL, 'The model this task is for.'],
         ['stub', null, InputOption::VALUE_OPTIONAL, 'The stub file to load for this generator.'],
     ];
+
     /**
      * The console command name.
      *
      * @var string
      */
     protected $name = 'apiato:generate:task';
+
     /**
      * The console command description.
      *
      * @var string
      */
     protected $description = 'Create a Task file for a Container';
+
     /**
      * The type of class being generated.
      */
     protected string $fileType = 'Task';
+
     /**
      * The structure of the file path.
      */
     protected string $pathStructure = '{section-name}/{container-name}/Tasks/*';
+
     /**
      * The structure of the file name.
      */
     protected string $nameStructure = '{file-name}';
+
     /**
      * The name of the stub file.
      */

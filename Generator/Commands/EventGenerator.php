@@ -15,34 +15,40 @@ class EventGenerator extends GeneratorCommand implements ComponentsGenerator
      *
      * @var  array
      */
-    public $inputs = [
+    public array $inputs = [
         ['model', null, InputOption::VALUE_OPTIONAL, 'The model to generate this Event for'],
         ['handler', null, InputOption::VALUE_OPTIONAL, 'Generate a Handler for this Event?'],
     ];
+
     /**
      * The console command name.
      *
      * @var string
      */
     protected $name = 'apiato:generate:event';
+
     /**
      * The console command description.
      *
      * @var string
      */
     protected $description = 'Create a new Event class and its corresponding Handler';
+
     /**
      * The type of class being generated.
      */
     protected string $fileType = 'Event';
+
     /**
      * The structure of the file path.
      */
     protected string $pathStructure = '{section-name}/{container-name}/Events/Events/*';
+
     /**
      * The structure of the file name.
      */
     protected string $nameStructure = '{file-name}';
+
     /**
      * The name of the stub file.
      */

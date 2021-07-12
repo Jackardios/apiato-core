@@ -16,7 +16,7 @@ class PolicyGenerator extends GeneratorCommand implements ComponentsGenerator
      *
      * @var array
      */
-    public $inputs = [
+    public array $inputs = [
         ['model', 'm', InputOption::VALUE_OPTIONAL, 'The model that the policy applies to'],
         ['guard', 'g', InputOption::VALUE_OPTIONAL, 'The guard that the policy relies on'],
     ];

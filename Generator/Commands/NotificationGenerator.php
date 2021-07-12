@@ -14,32 +14,38 @@ class NotificationGenerator extends GeneratorCommand implements ComponentsGenera
      *
      * @var  array
      */
-    public $inputs = [
+    public array $inputs = [
     ];
+
     /**
      * The console command name.
      *
      * @var string
      */
     protected $name = 'apiato:generate:notification';
+
     /**
      * The console command description.
      *
      * @var string
      */
     protected $description = 'Create a new Notification class';
+
     /**
      * The type of class being generated.
      */
     protected string $fileType = 'Notification';
+
     /**
      * The structure of the file path.
      */
     protected string $pathStructure = '{section-name}/{container-name}/Notifications/*';
+
     /**
      * The structure of the file name.
      */
     protected string $nameStructure = '{file-name}';
+
     /**
      * The name of the stub file.
      */

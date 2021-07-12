@@ -14,32 +14,38 @@ class ReadmeGenerator extends GeneratorCommand implements ComponentsGenerator
      *
      * @var  array
      */
-    public $inputs = [
+    public array $inputs = [
     ];
+
     /**
      * The console command name.
      *
      * @var string
      */
     protected $name = 'apiato:generate:readme';
+
     /**
      * The console command description.
      *
      * @var string
      */
     protected $description = 'Create a README file for a Container';
+
     /**
      * The type of class being generated.
      */
     protected string $fileType = 'Readme';
+
     /**
      * The structure of the file path.
      */
     protected string $pathStructure = '{section-name}/{container-name}/*';
+
     /**
      * The structure of the file name.
      */
     protected string $nameStructure = '{file-name}';
+
     /**
      * The name of the stub file.
      */

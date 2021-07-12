@@ -15,7 +15,7 @@ class RouteGenerator extends GeneratorCommand implements ComponentsGenerator
      *
      * @var  array
      */
-    public $inputs = [
+    public array $inputs = [
         ['ui', null, InputOption::VALUE_OPTIONAL, 'The user-interface to generate the Controller for.'],
         ['operation', null, InputOption::VALUE_OPTIONAL, 'The operation from the Controller to be called (e.g., index)'],
         ['doctype', null, InputOption::VALUE_OPTIONAL, 'The type of the endpoint (private, public)'],
@@ -23,30 +23,36 @@ class RouteGenerator extends GeneratorCommand implements ComponentsGenerator
         ['url', null, InputOption::VALUE_OPTIONAL, 'The URI of the endpoint (/stores, /cars, ...)'],
         ['verb', null, InputOption::VALUE_OPTIONAL, 'The HTTP verb of the endpoint (GET, POST, ...)'],
     ];
+
     /**
      * The console command name.
      *
      * @var string
      */
     protected $name = 'apiato:generate:route';
+
     /**
      * The console command description.
      *
      * @var string
      */
     protected $description = 'Create a new Route class';
+
     /**
      * The type of class being generated.
      */
     protected string $fileType = 'Route';
+
     /**
      * The structure of the file path.
      */
     protected string $pathStructure = '{section-name}/{container-name}/UI/{user-interface}/Routes/*';
+
     /**
      * The structure of the file name.
      */
     protected string $nameStructure = '{endpoint-name}.{endpoint-version}.{documentation-type}';
+
     /**
      * The name of the stub file.
      */

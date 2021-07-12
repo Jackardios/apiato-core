@@ -16,34 +16,40 @@ class TransformerGenerator extends GeneratorCommand implements ComponentsGenerat
      *
      * @var  array
      */
-    public $inputs = [
+    public array $inputs = [
         ['model', null, InputOption::VALUE_OPTIONAL, 'The model to generate this Transformer for'],
         ['full', null, InputOption::VALUE_OPTIONAL, 'Generate a Transformer with all fields of the model'],
     ];
+
     /**
      * The console command name.
      *
      * @var string
      */
     protected $name = 'apiato:generate:transformer';
+
     /**
      * The console command description.
      *
      * @var string
      */
     protected $description = 'Create a new Transformer class for a given Model';
+
     /**
      * The type of class being generated.
      */
     protected string $fileType = 'Transformer';
+
     /**
      * The structure of the file path.
      */
     protected string $pathStructure = '{section-name}/{container-name}/UI/API/Transformers/*';
+
     /**
      * The structure of the file name.
      */
     protected string $nameStructure = '{file-name}';
+
     /**
      * The name of the stub file.
      */

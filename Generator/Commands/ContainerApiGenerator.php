@@ -21,30 +21,36 @@ class ContainerApiGenerator extends GeneratorCommand implements ComponentsGenera
         ['doctype', null, InputOption::VALUE_OPTIONAL, 'The type of all endpoints to be generated (private, public)'],
         ['url', null, InputOption::VALUE_OPTIONAL, 'The base URI of all endpoints (/stores, /cars, ...)']
     ];
+
     /**
      * The console command name.
      *
      * @var string
      */
     protected $name = 'apiato:generate:container:api';
+
     /**
      * The console command description.
      *
      * @var string
      */
     protected $description = 'Create a Container for apiato from scratch (API Part)';
+
     /**
      * The type of class being generated.
      */
     protected string $fileType = 'Container';
+
     /**
      * The structure of the file path.
      */
     protected string $pathStructure = '{section-name}/{container-name}/*';
+
     /**
      * The structure of the file name.
      */
     protected string $nameStructure = '{file-name}';
+
     /**
      * The name of the stub file.
      */
