@@ -85,6 +85,7 @@ class TaskGenerator extends GeneratorCommand implements ComponentsGenerator
                 'container-name' => $this->containerName,
                 'class-name' => $this->fileName,
                 'model' => $model,
+                'entity' => Str::camel($model),
                 'models' => $models,
             ],
             'file-parameters' => [
