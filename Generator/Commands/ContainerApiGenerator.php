@@ -124,6 +124,15 @@ class ContainerApiGenerator extends GeneratorCommand implements ComponentsGenera
             '--full' => false,
         ]);
 
+        // create a factory for the model
+        $this->printInfoMessage('Generating Factory for the Model');
+        $this->call('apiato:generate:factory', [
+            '--section' => $sectionName,
+            '--container' => $containerName,
+            '--file' => $model . 'Factory',
+            '--model' => $model,
+        ]);
+
         // create a policy for the model
         $this->printInfoMessage('Generating Policy for the Model');
         $this->call('apiato:generate:policy', [
