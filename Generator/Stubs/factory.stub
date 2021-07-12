@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\{{section-name}}\{{container-name}}\Factories;
+namespace App\Containers\{{section-name}}\{{container-name}}\Data\Factories;
 
 use App\Containers\{{section-name}}\{{container-name}}\Models\{{model}};
 use App\Ship\Parents\Factories\Factory;

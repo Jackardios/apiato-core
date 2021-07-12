@@ -42,7 +42,7 @@ class FactoryGenerator extends GeneratorCommand implements ComponentsGenerator
     /**
      * The structure of the file path.
      */
-    protected string $pathStructure = '{section-name}/{container-name}/Policies/*';
+    protected string $pathStructure = '{section-name}/{container-name}/Data/Factories/*';
 
     /**
      * The structure of the file name.
