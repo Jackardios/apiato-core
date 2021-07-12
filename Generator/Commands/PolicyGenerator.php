@@ -109,10 +109,10 @@ class PolicyGenerator extends GeneratorCommand implements ComponentsGenerator
                 'container-name' => $this->containerName,
                 'class-name' => $this->fileName,
                 'model' => $model,
-                'model-variable' => $modelVariable,
+                'entity' => $modelVariable,
                 'namespaced-user-model' => $namespacedUserModel,
                 'user-model' => $userModel,
-                'user-model-variable' => $userModelVariable,
+                'user-entity' => $userModelVariable,
             ],
             'file-parameters' => [
                 'file-name' => $this->fileName,

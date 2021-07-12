@@ -71,7 +71,7 @@ class TransformerGenerator extends GeneratorCommand implements ComponentsGenerat
                 'container-name' => $this->containerName,
                 'class-name' => $this->fileName,
                 'model' => $model,
-                '_model' => Str::camel($model),
+                'entity' => Str::camel($model),
                 'attributes' => $attributes,
             ],
             'file-parameters' => [
@@ -83,9 +83,9 @@ class TransformerGenerator extends GeneratorCommand implements ComponentsGenerat
     private function getListOfAllAttributes($full, $model)
     {
         $indent = str_repeat(' ', 12);
-        $_model = Str::camel($model);
+        $entity = Str::camel($model);
         $fields = [
-            'object' => '$' . $_model . '->getResourceKey()',
+            'object' => '$' . $entity . '->getResourceKey()',
         ];
 
         if ($full) {
@@ -99,16 +99,16 @@ class TransformerGenerator extends GeneratorCommand implements ComponentsGenerat
                     continue;
                 }
 
-                $fields[$column] = '$' . $_model . '->' . $column;
+                $fields[$column] = '$' . $entity . '->' . $column;
             }
         }
 
         $fields = array_merge($fields, [
-            'id' => '$' . $_model . '->getKey()',
-            'created_at' => '$' . $_model . '->created_at',
-            'updated_at' => '$' . $_model . '->updated_at',
-            'readable_created_at' => '$' . $_model . '->created_at->diffForHumans()',
-            'readable_updated_at' => '$' . $_model . '->updated_at->diffForHumans()'
+            'id' => '$' . $entity . '->getKey()',
+            'created_at' => '$' . $entity . '->created_at',
+            'updated_at' => '$' . $entity . '->updated_at',
+            'readable_created_at' => '$' . $entity . '->created_at->diffForHumans()',
+            'readable_updated_at' => '$' . $entity . '->updated_at->diffForHumans()'
         ]);
 
         $attributes = "";

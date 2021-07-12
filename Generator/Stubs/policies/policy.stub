@@ -13,10 +13,10 @@ class {{class-name}}
     /**
      * Determine whether the user can view any models.
      *
-     * @param  \{{namespaced-user-model}}  ${{user-model-variable}}
+     * @param  \{{namespaced-user-model}}  ${{user-entity}}
      * @return mixed
      */
-    public function viewAny({{user-model}} ${{user-model-variable}})
+    public function viewAny({{user-model}} ${{user-entity}})
     {
         //
     }
@@ -24,11 +24,11 @@ class {{class-name}}
     /**
      * Determine whether the user can view the model.
      *
-     * @param  \{{namespaced-user-model}}  ${{user-model-variable}}
-     * @param  \App\Containers\{{section-name}}\{{container-name}}\Models\{{model}}  ${{model-variable}}
+     * @param  \{{namespaced-user-model}}  ${{user-entity}}
+     * @param  \App\Containers\{{section-name}}\{{container-name}}\Models\{{model}}  ${{entity}}
      * @return mixed
      */
-    public function view({{user-model}} ${{user-model-variable}}, {{model}} ${{model-variable}})
+    public function view({{user-model}} ${{user-entity}}, {{model}} ${{entity}})
     {
         //
     }
@@ -36,10 +36,10 @@ class {{class-name}}
     /**
      * Determine whether the user can create models.
      *
-     * @param  \{{namespaced-user-model}}  ${{user-model-variable}}
+     * @param  \{{namespaced-user-model}}  ${{user-entity}}
      * @return mixed
      */
-    public function create({{user-model}} ${{user-model-variable}})
+    public function create({{user-model}} ${{user-entity}})
     {
         //
     }
@@ -47,11 +47,11 @@ class {{class-name}}
     /**
      * Determine whether the user can update the model.
      *
-     * @param  \{{namespaced-user-model}}  ${{user-model-variable}}
-     * @param  \App\Containers\{{section-name}}\{{container-name}}\Models\{{model}}  ${{model-variable}}
+     * @param  \{{namespaced-user-model}}  ${{user-entity}}
+     * @param  \App\Containers\{{section-name}}\{{container-name}}\Models\{{model}}  ${{entity}}
      * @return mixed
      */
-    public function update({{user-model}} ${{user-model-variable}}, {{model}} ${{model-variable}})
+    public function update({{user-model}} ${{user-entity}}, {{model}} ${{entity}})
     {
         //
     }
@@ -59,11 +59,11 @@ class {{class-name}}
     /**
      * Determine whether the user can delete the model.
      *
-     * @param  \{{namespaced-user-model}}  ${{user-model-variable}}
-     * @param  \App\Containers\{{section-name}}\{{container-name}}\Models\{{model}}  ${{model-variable}}
+     * @param  \{{namespaced-user-model}}  ${{user-entity}}
+     * @param  \App\Containers\{{section-name}}\{{container-name}}\Models\{{model}}  ${{entity}}
      * @return mixed
      */
-    public function delete({{user-model}} ${{user-model-variable}}, {{model}} ${{model-variable}})
+    public function delete({{user-model}} ${{user-entity}}, {{model}} ${{entity}})
     {
         //
     }
@@ -71,11 +71,11 @@ class {{class-name}}
     /**
      * Determine whether the user can restore the model.
      *
-     * @param  \{{namespaced-user-model}}  ${{user-model-variable}}
-     * @param  \App\Containers\{{section-name}}\{{container-name}}\Models\{{model}}  ${{model-variable}}
+     * @param  \{{namespaced-user-model}}  ${{user-entity}}
+     * @param  \App\Containers\{{section-name}}\{{container-name}}\Models\{{model}}  ${{entity}}
      * @return mixed
      */
-    public function restore({{user-model}} ${{user-model-variable}}, {{model}} ${{model-variable}})
+    public function restore({{user-model}} ${{user-entity}}, {{model}} ${{entity}})
     {
         //
     }
@@ -83,11 +83,11 @@ class {{class-name}}
     /**
      * Determine whether the user can permanently delete the model.
      *
-     * @param  \{{namespaced-user-model}}  ${{user-model-variable}}
-     * @param  \App\Containers\{{section-name}}\{{container-name}}\Models\{{model}}  ${{model-variable}}
+     * @param  \{{namespaced-user-model}}  ${{user-entity}}
+     * @param  \App\Containers\{{section-name}}\{{container-name}}\Models\{{model}}  ${{entity}}
      * @return mixed
      */
-    public function forceDelete({{user-model}} ${{user-model-variable}}, {{model}} ${{model-variable}})
+    public function forceDelete({{user-model}} ${{user-entity}}, {{model}} ${{entity}})
     {
         //
     }

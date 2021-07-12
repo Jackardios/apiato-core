@@ -18,7 +18,6 @@ use Apiato\Core\Generator\Commands\ModelGenerator;
 use Apiato\Core\Generator\Commands\NotificationGenerator;
 use Apiato\Core\Generator\Commands\PolicyGenerator;
 use Apiato\Core\Generator\Commands\ReadmeGenerator;
-use Apiato\Core\Generator\Commands\RepositoryGenerator;
 use Apiato\Core\Generator\Commands\RequestGenerator;
 use Apiato\Core\Generator\Commands\RouteGenerator;
 use Apiato\Core\Generator\Commands\SeederGenerator;
@@ -65,7 +64,6 @@ class GeneratorsServiceProvider extends ServiceProvider
             NotificationGenerator::class,
             PolicyGenerator::class,
             ReadmeGenerator::class,
-            RepositoryGenerator::class,
             RequestGenerator::class,
             RouteGenerator::class,
             SeederGenerator::class,

@@ -63,12 +63,12 @@ class RouteGenerator extends GeneratorCommand implements ComponentsGenerator
         $operation = $this->checkParameterOrAsk('operation', 'Enter the name of the controller function that needs to be invoked when calling this endpoint');
         $verb = Str::upper($this->checkParameterOrAsk('verb', 'Enter the HTTP verb of this endpoint (GET, POST,...)'));
         // Get the URI and remove the first trailing slash
-        $url = Str::lower($this->checkParameterOrAsk('url', 'Enter the endpoint URI (foo/bar/{id})'));
+        $url = $this->checkParameterOrAsk('url', 'Enter the endpoint URI (foo/bar/{id})');
         $url = ltrim($url, '/');
 
         $docUrl = preg_replace('~\{(.+?)\}~', ':$1', $url);
 
-        $routeName = Str::lower($ui . '_' . $this->containerName . '_' . Str::snake($operation));
+        $routeName = Str::lower($ui . '.' . $this->containerName . '.' . Str::snake($operation));
 
         // Change the stub to the currently selected UI (API / WEB)
         $this->stubName = 'routes/' . $ui . '.stub';

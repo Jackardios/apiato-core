@@ -91,12 +91,11 @@ class ContainerWebGenerator extends GeneratorCommand implements ComponentsGenera
         ]);
 
         // create the model and repository for this container
-        $this->printInfoMessage('Generating Model and Repository');
+        $this->printInfoMessage('Generating Model');
         $this->call('apiato:generate:model', [
             '--section' => $sectionName,
             '--container' => $containerName,
             '--file' => $model,
-            '--repository' => true,
         ]);
 
         // create the migration file for the model
@@ -108,6 +107,15 @@ class ContainerWebGenerator extends GeneratorCommand implements ComponentsGenera
             '--tablename' => Str::snake($models),
         ]);
 
+        // create a policy for the model
+        $this->printInfoMessage('Generating Policy for the Model');
+        $this->call('apiato:generate:policy', [
+            '--section' => $sectionName,
+            '--container' => $containerName,
+            '--file' => $model . 'Policy',
+            '--model' => $model,
+        ]);
+
         // create the default routes for this container
         $this->printInfoMessage('Generating Default Routes');
         $version = 1;
@@ -117,30 +125,33 @@ class ContainerWebGenerator extends GeneratorCommand implements ComponentsGenera
         $url = Str::lower($this->checkParameterOrAsk('url', 'Enter the base URI for *all* WEB endpoints (foo/bar)', Str::lower($models)));
         $url = ltrim($url, '/');
 
+        // generate model route key
+        $modelRouteKey = Str::camel($model);
+
         $this->printInfoMessage('Creating Requests for Routes');
         $this->printInfoMessage('Generating Default Actions');
         $this->printInfoMessage('Generating Default Tasks');
 
         $routes = [
             [
-                'stub' => 'GetAll',
-                'name' => 'GetAll' . $models,
-                'operation' => 'index',
+                'stub' => 'List',
+                'name' => 'List' . $models,
+                'operation' => 'list',
                 'verb' => 'GET',
                 'url' => $url,
-                'action' => 'GetAll' . $models . 'Action',
-                'request' => 'GetAll' . $models . 'Request',
-                'task' => 'GetAll' . $models . 'Task',
+                'action' => 'List' . $models . 'Action',
+                'request' => 'List' . $models . 'Request',
+                'task' => 'List' . $models . 'Task',
             ],
             [
-                'stub' => 'Find',
-                'name' => 'Find' . $model . 'ById',
-                'operation' => 'show',
+                'stub' => 'View',
+                'name' => 'View' . $model,
+                'operation' => 'view',
                 'verb' => 'GET',
-                'url' => $url . '/{id}',
-                'action' => 'Find' . $model . 'ById' . 'Action',
-                'request' => 'Find' . $model . 'ById' . 'Request',
-                'task' => 'Find' . $model . 'ById' . 'Task',
+                'url' => $url . '/{' . $modelRouteKey . '}',
+                'action' => 'View' . $model . 'Action',
+                'request' => 'View' . $model . 'Request',
+                'task' => 'View' . $model . 'Task',
             ],
             [
                 'stub' => null,
@@ -167,7 +178,7 @@ class ContainerWebGenerator extends GeneratorCommand implements ComponentsGenera
                 'name' => 'Edit' . $model,
                 'operation' => 'edit',
                 'verb' => 'GET',
-                'url' => $url . '/{id}/edit',
+                'url' => $url . '/{' . $modelRouteKey . '}/edit',
                 'action' => null,
                 'request' => 'Edit' . $model . 'Request',
                 'task' => null,
@@ -177,7 +188,7 @@ class ContainerWebGenerator extends GeneratorCommand implements ComponentsGenera
                 'name' => 'Update' . $model,
                 'operation' => 'update',
                 'verb' => 'PATCH',
-                'url' => $url . '/{id}',
+                'url' => $url . '/{' . $modelRouteKey . '}',
                 'action' => 'Update' . $model . 'Action',
                 'request' => 'Update' . $model . 'Request',
                 'task' => 'Update' . $model . 'Task',
@@ -187,7 +198,7 @@ class ContainerWebGenerator extends GeneratorCommand implements ComponentsGenera
                 'name' => 'Delete' . $model,
                 'operation' => 'destroy',
                 'verb' => 'DELETE',
-                'url' => $url . '/{id}',
+                'url' => $url . '/{' . $modelRouteKey . '}',
                 'action' => 'Delete' . $model . 'Action',
                 'request' => 'Delete' . $model . 'Request',
                 'task' => 'Delete' . $model . 'Task',

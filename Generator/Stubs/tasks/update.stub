@@ -2,27 +2,22 @@
 
 namespace App\Containers\{{section-name}}\{{container-name}}\Tasks;
 
-use App\Containers\{{section-name}}\{{container-name}}\Data\Repositories\{{model}}Repository;
+use App\Containers\{{section-name}}\{{container-name}}\Models\{{model}};
 use App\Ship\Exceptions\UpdateResourceFailedException;
 use App\Ship\Parents\Tasks\Task;
 use Exception;
 
 class Update{{model}}Task extends Task
 {
-    protected {{model}}Repository $repository;
-
-    public function __construct({{model}}Repository $repository)
-    {
-        $this->repository = $repository;
-    }
-
-    public function run($id, array $data)
+    public function run({{model}} ${{entity}}, array $data): {{model}}
     {
         try {
-            return $this->repository->update($data, $id);
+            ${{entity}}->update($data);
         }
         catch (Exception $exception) {
             throw new UpdateResourceFailedException();
         }
+
+        return ${{entity}};
     }
 }

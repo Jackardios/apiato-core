@@ -73,7 +73,7 @@ class ControllerGenerator extends GeneratorCommand implements ComponentsGenerato
         $model = $this->containerName;
         $models = Pluralizer::plural($model);
 
-        $entity = Str::lower($model);
+        $entity = Str::camel($model);
         $entities = Pluralizer::plural($entity);
 
         return [

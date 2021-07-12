@@ -21,15 +21,15 @@ class {{class-name}} extends Transformer
 
     ];
 
-    public function transform({{model}} ${{_model}}): array
+    public function transform({{model}} ${{entity}}): array
     {
         $response = [
 {{attributes}}
         ];
 
         $response = $this->ifAdmin([
-            'real_id'    => ${{_model}}->getKey(),
-            // 'deleted_at' => ${{_model}}->deleted_at,
+            'real_id'    => ${{entity}}->getKey(),
+            // 'deleted_at' => ${{entity}}->deleted_at,
         ], $response);
 
         return $response;

@@ -67,7 +67,7 @@ class ActionGenerator extends GeneratorCommand implements ComponentsGenerator
 
         $models = Pluralizer::plural($model);
 
-        $entity = Str::lower($model);
+        $entity = Str::camel($model);
         $entities = Pluralizer::plural($entity);
 
         return [

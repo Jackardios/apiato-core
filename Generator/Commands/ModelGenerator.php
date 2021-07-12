@@ -11,15 +11,6 @@ use Symfony\Component\Console\Input\InputOption;
 class ModelGenerator extends GeneratorCommand implements ComponentsGenerator
 {
     /**
-     * User required/optional inputs expected to be passed while calling the command.
-     * This is a replacement of the `getArguments` function "which reads whenever it's called".
-     *
-     * @var  array
-     */
-    public $inputs = [
-        ['repository', null, InputOption::VALUE_OPTIONAL, 'Generate the corresponding Repository for this Model?'],
-    ];
-    /**
      * The console command name.
      *
      * @var string
@@ -53,21 +44,6 @@ class ModelGenerator extends GeneratorCommand implements ComponentsGenerator
      */
     public function getUserInputs()
     {
-        $repository = $this->checkParameterOrConfirm('repository', 'Do you want to generate the corresponding Repository for this Model?', true);
-        if ($repository) {
-            // We need to generate a corresponding repository
-            // so call the other command
-            $status = $this->call('apiato:generate:repository', [
-                '--section' => $this->sectionName,
-                '--container' => $this->containerName,
-                '--file' => $this->fileName . 'Repository'
-            ]);
-
-            if ($status != 0) {
-                $this->printErrorMessage('Could not generate the corresponding Repository!');
-            }
-        }
-
         return [
             'path-parameters' => [
                 'section-name' => $this->sectionName,
