@@ -2,11 +2,12 @@
 
 namespace App\Containers\{{section-name}}\{{container-name}}\Policies;
 
+use Apiato\Core\Abstracts\Policies\Policy;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use App\Containers\{{section-name}}\{{container-name}}\Models\{{model}};
 use {{namespaced-user-model}};
 
-class {{class-name}}
+class {{class-name}} extends Policy
 {
     use HandlesAuthorization;
 
