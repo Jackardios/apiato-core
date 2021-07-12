@@ -14,6 +14,7 @@ class RequestGenerator extends GeneratorCommand implements ComponentsGenerator
      * This is a replacement of the `getArguments` function "which reads whenever it's called".
      */
     public array $inputs = [
+        ['model', 'm', InputOption::VALUE_OPTIONAL, 'The model that the request applies to'],
         ['ui', null, InputOption::VALUE_OPTIONAL, 'The user-interface to generate the Request for.'],
         ['stub', null, InputOption::VALUE_OPTIONAL, 'The stub file to load for this generator.']
     ];
@@ -55,10 +56,13 @@ class RequestGenerator extends GeneratorCommand implements ComponentsGenerator
     public function getUserInputs(): array
     {
         $ui = Str::lower($this->checkParameterOrChoice('ui', 'Select the UI for the controller', ['API', 'WEB'], 0));
-        $stub = $this->option('stub');
+        $model = $this->checkParameterOrAsk('model', 'Enter the name of the model that the request applies to.', $this->containerName);
+        if ($model) {
+            $stub = $this->option('stub');
 
-        // Load a new stub-file if generating container otherwise use generic
-        $this->stubName = $stub ? 'requests/' . Str::lower($stub) . '.stub' : $this->stubName;
+            // Load a new stub-file if generating container otherwise use generic
+            $this->stubName = $stub ? 'requests/' . Str::lower($stub) . '.stub' : $this->stubName;
+        }
 
         return [
             'path-parameters' => [
@@ -72,6 +76,8 @@ class RequestGenerator extends GeneratorCommand implements ComponentsGenerator
                 '_container-name' => Str::lower($this->containerName),
                 'container-name' => $this->containerName,
                 'class-name' => $this->fileName,
+                'model' => $model,
+                'entity' => Str::camel($model),
                 'user-interface' => Str::upper($ui)
             ],
             'file-parameters' => [
