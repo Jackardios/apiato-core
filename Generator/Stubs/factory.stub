@@ -1,0 +1,18 @@
+<?php
+
+namespace App\Containers\{{section-name}}\{{container-name}}\Factories;
+
+use App\Containers\{{section-name}}\{{container-name}}\Models\{{model}};
+use App\Ship\Parents\Factories\Factory;
+
+class {{class-name}} extends Factory
+{
+    protected $model = {{model}}::class;
+
+    public function definition(): array
+    {
+        return [
+            // 'name' => $this->faker->name,
+        ];
+    }
+}
