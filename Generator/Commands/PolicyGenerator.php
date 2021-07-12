@@ -92,9 +92,9 @@ class PolicyGenerator extends GeneratorCommand implements ComponentsGenerator
         $userModel = class_basename($namespacedUserModel);
         $userModelVariable = Str::camel($userModel);
 
-        $modelVariable = Str::camel($model);
-        if ($modelVariable === $userModelVariable) {
-            $modelVariable = 'model';
+        $entity = Str::camel($model);
+        if ($entity === $userModelVariable) {
+            $entity = 'model';
         }
 
         return [
@@ -109,7 +109,7 @@ class PolicyGenerator extends GeneratorCommand implements ComponentsGenerator
                 'container-name' => $this->containerName,
                 'class-name' => $this->fileName,
                 'model' => $model,
-                'entity' => $modelVariable,
+                'entity' => $entity,
                 'namespaced-user-model' => $namespacedUserModel,
                 'user-model' => $userModel,
                 'user-entity' => $userModelVariable,
@@ -125,6 +125,6 @@ class PolicyGenerator extends GeneratorCommand implements ComponentsGenerator
      */
     public function getDefaultFileName(): string
     {
-        return 'DefaultPolicy';
+        return $this->containerName . 'Policy';
     }
 }
