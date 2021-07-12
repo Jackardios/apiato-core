@@ -96,7 +96,7 @@ class ContainerWebGenerator extends GeneratorCommand implements ComponentsGenera
             '--stub' => 'mainserviceprovider',
         ]);
 
-        // create the model and repository for this container
+        // create the model for this container
         $this->printInfoMessage('Generating Model');
         $this->call('apiato:generate:model', [
             '--section' => $sectionName,

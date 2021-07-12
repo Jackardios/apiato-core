@@ -97,13 +97,12 @@ class ContainerApiGenerator extends GeneratorCommand implements ComponentsGenera
             '--stub' => 'mainserviceprovider',
         ]);
 
-        // create the model and repository for this container
-        $this->printInfoMessage('Generating Model and Repository');
+        // create the model for this container
+        $this->printInfoMessage('Generating Model');
         $this->call('apiato:generate:model', [
             '--section' => $sectionName,
             '--container' => $containerName,
             '--file' => $model,
-            '--repository' => true,
         ]);
 
         // create the migration file for the model
