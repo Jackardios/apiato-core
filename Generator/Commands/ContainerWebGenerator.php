@@ -157,7 +157,7 @@ class ContainerWebGenerator extends GeneratorCommand implements ComponentsGenera
                 'url' => $url . '/{' . $modelRouteKey . '}',
                 'action' => 'View' . $model . 'Action',
                 'request' => 'View' . $model . 'Request',
-                'task' => 'View' . $model . 'Task',
+                'task' => null,
             ],
             [
                 'stub' => null,
@@ -229,10 +229,10 @@ class ContainerWebGenerator extends GeneratorCommand implements ComponentsGenera
                 '--container' => $containerName,
                 '--file' => $route['request'],
                 '--ui' => $ui,
-                '--stub' => $route['stub']
+                '--stub' => $route['stub'],
             ]);
 
-            if ($route['action'] != null || $route['stub'] != null) {
+            if (isset($route['action'])) {
                 $this->call('apiato:generate:action', [
                     '--section' => $sectionName,
                     '--container' => $containerName,
@@ -242,7 +242,7 @@ class ContainerWebGenerator extends GeneratorCommand implements ComponentsGenera
                 ]);
             }
 
-            if ($route['task'] != null || $route['stub'] != null) {
+            if (isset($route['task'])) {
                 $this->call('apiato:generate:task', [
                     '--section' => $sectionName,
                     '--container' => $containerName,

@@ -166,7 +166,7 @@ class ContainerApiGenerator extends GeneratorCommand implements ComponentsGenera
                 'url' => $url . '/{' . $modelRouteKey . '}',
                 'action' => 'View' . $model . 'Action',
                 'request' => 'View' . $model . 'Request',
-                'task' => 'View' . $model . 'Task',
+                'task' => null,
             ],
             [
                 'stub' => 'Create',
@@ -221,21 +221,25 @@ class ContainerApiGenerator extends GeneratorCommand implements ComponentsGenera
                 '--stub' => $route['stub']
             ]);
 
-            $this->call('apiato:generate:action', [
-                '--section' => $sectionName,
-                '--container' => $containerName,
-                '--file' => $route['action'],
-                '--model' => $model,
-                '--stub' => $route['stub'],
-            ]);
+            if (isset($route['action'])) {
+                $this->call('apiato:generate:action', [
+                    '--section' => $sectionName,
+                    '--container' => $containerName,
+                    '--file' => $route['action'],
+                    '--model' => $model,
+                    '--stub' => $route['stub'],
+                ]);
+            }
 
-            $this->call('apiato:generate:task', [
-                '--section' => $sectionName,
-                '--container' => $containerName,
-                '--file' => $route['task'],
-                '--model' => $model,
-                '--stub' => $route['stub'],
-            ]);
+            if (isset($route['task'])) {
+                $this->call('apiato:generate:task', [
+                    '--section' => $sectionName,
+                    '--container' => $containerName,
+                    '--file' => $route['task'],
+                    '--model' => $model,
+                    '--stub' => $route['stub'],
+                ]);
+            }
         }
 
         // finally generate the controller
