@@ -30,6 +30,6 @@ class {{class-name}} extends Request
      */
     public function authorize(): bool
     {
-        return $this->user()->can('viewAll', {{model}}::class);
+        return $this->user()->can('viewAny', {{model}}::class);
     }
 }
