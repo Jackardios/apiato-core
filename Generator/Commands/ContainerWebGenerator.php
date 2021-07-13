@@ -61,11 +61,11 @@ class ContainerWebGenerator extends GeneratorCommand implements ComponentsGenera
 
         // container name as inputted and lower
         $sectionName = $this->sectionName;
-        $_sectionName = Str::lower($this->sectionName);
+        $_sectionName = Str::snake($this->sectionName);
 
         // container name as inputted and lower
         $containerName = $this->containerName;
-        $_containerName = Str::lower($this->containerName);
+        $_containerName = Str::snake($this->containerName);
 
         // name of the model (singular and plural)
         $model = $this->containerName;
@@ -308,6 +308,7 @@ class ContainerWebGenerator extends GeneratorCommand implements ComponentsGenera
                 'container-name' => $this->containerName,
             ],
             'stub-parameters' => [
+                'package-name' => Str::kebab($this->containerName),
                 '_section-name' => $_sectionName,
                 'section-name' => $this->sectionName,
                 '_container-name' => $_containerName,

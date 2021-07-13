@@ -65,11 +65,11 @@ class ContainerGenerator extends GeneratorCommand implements ComponentsGenerator
 
         // container name as inputted and lower
         $sectionName = $this->sectionName;
-        $_sectionName = Str::lower($this->sectionName);
+        $_sectionName = Str::snake($this->sectionName);
 
         // container name as inputted and lower
         $containerName = $this->containerName;
-        $_containerName = Str::lower($this->containerName);
+        $_containerName = Str::snake($this->containerName);
 
         if ($ui === 'api' || $ui === 'both') {
             $this->call('apiato:generate:container:api', [
@@ -94,6 +94,7 @@ class ContainerGenerator extends GeneratorCommand implements ComponentsGenerator
                 'container-name' => $this->containerName,
             ],
             'stub-parameters' => [
+                'package-name' => Str::kebab($this->containerName),
                 '_section-name' => $_sectionName,
                 'section-name' => $this->sectionName,
                 '_container-name' => $_containerName,

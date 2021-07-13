@@ -62,9 +62,9 @@ class JobGenerator extends GeneratorCommand implements ComponentsGenerator
                 'container-name' => $this->containerName,
             ],
             'stub-parameters' => [
-                '_section-name' => Str::lower($this->sectionName),
+                '_section-name' => Str::snake($this->sectionName),
                 'section-name' => $this->sectionName,
-                '_container-name' => Str::lower($this->containerName),
+                '_container-name' => Str::snake($this->containerName),
                 'container-name' => $this->containerName,
                 'class-name' => $this->fileName,
             ],

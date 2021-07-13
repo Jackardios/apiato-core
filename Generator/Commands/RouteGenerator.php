@@ -89,9 +89,9 @@ class RouteGenerator extends GeneratorCommand implements ComponentsGenerator
                 'user-interface' => Str::upper($ui),
             ],
             'stub-parameters' => [
-                '_section-name' => Str::lower($this->sectionName),
+                '_section-name' => Str::snake($this->sectionName),
                 'section-name' => $this->sectionName,
-                '_container-name' => Str::lower($this->containerName),
+                '_container-name' => Str::snake($this->containerName),
                 'container-name' => $this->containerName,
                 'operation' => $operation,
                 'user-interface' => Str::upper($ui),
