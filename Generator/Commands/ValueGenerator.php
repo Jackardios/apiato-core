@@ -68,7 +68,7 @@ class ValueGenerator extends GeneratorCommand implements ComponentsGenerator
                 '_container-name' => Str::snake($this->containerName),
                 'container-name' => $this->containerName,
                 'class-name' => $this->fileName,
-                'resource-key' => strtolower(Pluralizer::plural($this->fileName)),
+                'resource-key' => Str::lower(Pluralizer::plural($this->fileName)),
             ],
             'file-parameters' => [
                 'file-name' => $this->fileName,

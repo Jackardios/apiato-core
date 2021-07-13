@@ -31,6 +31,7 @@ use Apiato\Core\Generator\Commands\TestUnitTestGenerator;
 use Apiato\Core\Generator\Commands\TransformerGenerator;
 use Apiato\Core\Generator\Commands\ValueGenerator;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Str;
 
 class GeneratorsServiceProvider extends ServiceProvider
 {
@@ -87,7 +88,7 @@ class GeneratorsServiceProvider extends ServiceProvider
     private function registerGenerators(array $classes): void
     {
         foreach ($classes as $class) {
-            $lowerClass = strtolower($class);
+            $lowerClass = Str::lower($class);
 
             $this->app->singleton("command.porto.$lowerClass", function ($app) use ($class) {
                 return $app[$class];
