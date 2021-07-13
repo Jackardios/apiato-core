@@ -22,6 +22,7 @@ class RouteGenerator extends GeneratorCommand implements ComponentsGenerator
         ['docversion', null, InputOption::VALUE_OPTIONAL, 'The version of the endpoint (1, 2, ...)'],
         ['url', null, InputOption::VALUE_OPTIONAL, 'The URI of the endpoint (/stores, /cars, ...)'],
         ['verb', null, InputOption::VALUE_OPTIONAL, 'The HTTP verb of the endpoint (GET, POST, ...)'],
+        ['api-prefix', null, InputOption::VALUE_OPTIONAL, 'The prefix of API endpoints (/api)'],
     ];
 
     /**
@@ -68,6 +69,8 @@ class RouteGenerator extends GeneratorCommand implements ComponentsGenerator
         $doctype = $this->checkParameterOrChoice('doctype', 'Select the type for this endpoint', ['private', 'public'], 0);
         $operation = $this->checkParameterOrAsk('operation', 'Enter the name of the controller function that needs to be invoked when calling this endpoint');
         $verb = Str::upper($this->checkParameterOrAsk('verb', 'Enter the HTTP verb of this endpoint (GET, POST,...)'));
+        $apiPrefix = trim(Str::lower($this->checkParameterOrAsk('api-prefix', 'Enter the prefix of API endpoints', 'api/')), '/');
+        $preparedApiPrefix = $apiPrefix ? '/' . $apiPrefix : '';
         // Get the URI and remove the first trailing slash
         $url = $this->checkParameterOrAsk('url', 'Enter the endpoint URI (foo/bar/{id})');
         $url = ltrim($url, '/');
@@ -93,7 +96,7 @@ class RouteGenerator extends GeneratorCommand implements ComponentsGenerator
                 'operation' => $operation,
                 'user-interface' => Str::upper($ui),
                 'endpoint-url' => $url,
-                'doc-endpoint-url' => '/v' . $version . '/' . $docUrl,
+                'doc-endpoint-url' => $preparedApiPrefix . '/v' . $version . '/' . $docUrl,
                 'endpoint-version' => $version,
                 'http-verb' => Str::lower($verb),
                 'doc-http-verb' => Str::upper($verb),

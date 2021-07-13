@@ -19,7 +19,8 @@ class ContainerApiGenerator extends GeneratorCommand implements ComponentsGenera
     public array $inputs = [
         ['docversion', null, InputOption::VALUE_OPTIONAL, 'The version of all endpoints to be generated (1, 2, ...)'],
         ['doctype', null, InputOption::VALUE_OPTIONAL, 'The type of all endpoints to be generated (private, public)'],
-        ['url', null, InputOption::VALUE_OPTIONAL, 'The base URI of all endpoints (/stores, /cars, ...)']
+        ['url', null, InputOption::VALUE_OPTIONAL, 'The base URI of all endpoints (/stores, /cars, ...)'],
+        ['api-prefix', null, InputOption::VALUE_OPTIONAL, 'The prefix of API endpoints (/api)'],
     ];
 
     /**
@@ -144,6 +145,7 @@ class ContainerApiGenerator extends GeneratorCommand implements ComponentsGenera
 
         // create the default routes for this container
         $this->printInfoMessage('Generating Default Routes');
+        $apiPrefix = trim(Str::lower($this->checkParameterOrAsk('api-prefix', 'Enter the prefix of API endpoints', 'api/')), '/');
         $version = $this->checkParameterOrAsk('docversion', 'Enter the version for *all* API endpoints (integer)', 1);
         $doctype = $this->checkParameterOrChoice('doctype', 'Select the type for *all* endpoints', ['private', 'public'], 0);
 
@@ -223,6 +225,7 @@ class ContainerApiGenerator extends GeneratorCommand implements ComponentsGenera
                 '--operation' => $route['operation'],
                 '--doctype' => $doctype,
                 '--docversion' => $version,
+                '--api-prefix' => $apiPrefix,
                 '--url' => $route['url'],
                 '--verb' => $route['verb'],
             ]);
@@ -264,7 +267,7 @@ class ContainerApiGenerator extends GeneratorCommand implements ComponentsGenera
                     '--ui' => $ui,
                     '--model' => $model,
                     '--stub' => $route['stub'],
-                    '--endpoint' => Str::lower($route['verb']) . '@' . $route['url'],
+                    '--endpoint' => Str::lower($route['verb']) . '@' . $apiPrefix . '/v' . $version . '/' . $route['url'],
                 ]);
             }
         }
