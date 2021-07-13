@@ -42,8 +42,5 @@ class {{class-name}} extends ApiTestCase
         $response = $this->makeCall();
 
         $response->assertStatus(403);
-        $this->assertResponseContainKeyValue([
-            'message' => 'This action is unauthorized.',
-        ]);
     }
 }
