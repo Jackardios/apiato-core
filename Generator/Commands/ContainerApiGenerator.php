@@ -143,6 +143,16 @@ class ContainerApiGenerator extends GeneratorCommand implements ComponentsGenera
             '--model' => $model,
         ]);
 
+        // generate a permissions seeder for the model
+        $this->printInfoMessage('Generating Permissions Seeder for the Model');
+        $this->call('apiato:generate:seeder', [
+            '--section' => $sectionName,
+            '--container' => $containerName,
+            '--file' => $model . 'PermissionsSeeder_1',
+            '--model' => $model,
+            '--stub' => 'permissions'
+        ]);
+
         // create the default routes for this container
         $this->printInfoMessage('Generating Default Routes');
         $apiPrefix = trim(Str::lower($this->checkParameterOrAsk('api-prefix', 'Enter the prefix of API endpoints', 'api/')), '/');

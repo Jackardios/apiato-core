@@ -4,7 +4,9 @@ namespace Apiato\Core\Generator\Commands;
 
 use Apiato\Core\Generator\GeneratorCommand;
 use Apiato\Core\Generator\Interfaces\ComponentsGenerator;
+use Illuminate\Support\Pluralizer;
 use Illuminate\Support\Str;
+use Symfony\Component\Console\Input\InputOption;
 
 class SeederGenerator extends GeneratorCommand implements ComponentsGenerator
 {
@@ -15,6 +17,8 @@ class SeederGenerator extends GeneratorCommand implements ComponentsGenerator
      * @var  array
      */
     public array $inputs = [
+        ['model', 'm', InputOption::VALUE_OPTIONAL, 'The model this action is for.'],
+        ['stub', null, InputOption::VALUE_OPTIONAL, 'The stub file to load for this generator.'],
     ];
 
     /**
@@ -49,13 +53,28 @@ class SeederGenerator extends GeneratorCommand implements ComponentsGenerator
     /**
      * The name of the stub file.
      */
-    protected string $stubName = 'seeder.stub';
+    protected string $stubName = 'seeders/generic.stub';
 
     /**
      * @return array
      */
     public function getUserInputs()
     {
+        $stub = Str::lower($this->checkParameterOrChoice(
+            'stub',
+            'Select the Stub you want to load',
+            ['Generic', 'Permissions'],
+            0)
+        );
+
+        if ($stub === 'permissions') {
+            $this->stubName = 'seeders/' . $stub . '.stub';
+            $model = $this->checkParameterOrAsk('model', 'Enter the name of the model this action is for.', $this->containerName);
+
+            $entity = Str::camel($model);
+            $entities = Pluralizer::plural($entity);
+        }
+
         return [
             'path-parameters' => [
                 'section-name' => $this->sectionName,
@@ -67,6 +86,9 @@ class SeederGenerator extends GeneratorCommand implements ComponentsGenerator
                 '_container-name' => Str::lower($this->containerName),
                 'container-name' => $this->containerName,
                 'class-name' => $this->fileName,
+                'model' => $model ?? null,
+                'entity' => $entity ?? null,
+                'entities' => $entities ?? null,
             ],
             'file-parameters' => [
                 'file-name' => $this->fileName,
