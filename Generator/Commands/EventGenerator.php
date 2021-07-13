@@ -16,7 +16,7 @@ class EventGenerator extends GeneratorCommand implements ComponentsGenerator
      * @var  array
      */
     public array $inputs = [
-        ['model', null, InputOption::VALUE_OPTIONAL, 'The model to generate this Event for'],
+        ['model', 'm', InputOption::VALUE_OPTIONAL, 'The model to generate this Event for'],
         ['handler', null, InputOption::VALUE_OPTIONAL, 'Generate a Handler for this Event?'],
     ];
 

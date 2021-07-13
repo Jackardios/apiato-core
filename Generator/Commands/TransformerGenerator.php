@@ -17,7 +17,7 @@ class TransformerGenerator extends GeneratorCommand implements ComponentsGenerat
      * @var  array
      */
     public array $inputs = [
-        ['model', null, InputOption::VALUE_OPTIONAL, 'The model to generate this Transformer for'],
+        ['model', 'm', InputOption::VALUE_OPTIONAL, 'The model to generate this Transformer for'],
         ['full', null, InputOption::VALUE_OPTIONAL, 'Generate a Transformer with all fields of the model'],
     ];
 

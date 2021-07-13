@@ -17,7 +17,7 @@ class ActionGenerator extends GeneratorCommand implements ComponentsGenerator
      * @var  array
      */
     public array $inputs = [
-        ['model', null, InputOption::VALUE_OPTIONAL, 'The model this action is for.'],
+        ['model', 'm', InputOption::VALUE_OPTIONAL, 'The model this action is for.'],
         ['stub', null, InputOption::VALUE_OPTIONAL, 'The stub file to load for this generator.'],
     ];
 
