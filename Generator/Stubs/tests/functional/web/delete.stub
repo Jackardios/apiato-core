@@ -29,6 +29,9 @@ class {{class-name}} extends WebTestCase
         $response = $this->injectId(${{entity}}->id)->makeCall();
 
         $response->assertStatus(204);
+        $this->assertDatabaseMissing('{{table}}', [
+            'id' => ${{entity}}->id
+        ]);
     }
 
     public function testDeleteExisting{{model}}WithoutAccess(): void

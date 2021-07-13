@@ -35,7 +35,7 @@ class {{class-name}} extends WebTestCase
         ]);
         $responseContent = $this->getResponseContentObject();
         self::assertNotEmpty($responseContent->data);
-        $this->assertDatabaseHas('{{entities}}', [
+        $this->assertDatabaseHas('{{table}}', [
             // 'key' => $data['key']
         ]);
     }

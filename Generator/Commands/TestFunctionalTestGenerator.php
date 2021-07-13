@@ -72,6 +72,7 @@ class TestFunctionalTestGenerator extends GeneratorCommand implements Components
                 $models = Str::plural($model);
                 $entity = Str::camel($model);
                 $entities = Str::plural($entity);
+                $table = Str::snake($entities);
                 $stub = Str::lower($this->checkParameterOrChoice(
                     'stub',
                     'Select the Stub you want to load',
@@ -108,6 +109,7 @@ class TestFunctionalTestGenerator extends GeneratorCommand implements Components
                 'models' => $models ?? null,
                 'entity' => $entity ?? null,
                 'entities' => $entities ?? null,
+                'table' => $table ?? null,
                 'endpoint' => $endpoint ?? null,
             ],
             'file-parameters' => [
