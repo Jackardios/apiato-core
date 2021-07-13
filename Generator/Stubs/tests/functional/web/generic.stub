@@ -12,7 +12,7 @@ use App\Containers\{{section-name}}\{{container-name}}\Tests\WebTestCase;
  */
 class {{class-name}} extends WebTestCase
 {
-    // the endpoint to be called within this test (e.g., {{endpoint}})
+    // the endpoint to be called within this test (e.g., get@users)
     protected string $endpoint = 'method@endpoint';
 
     // fake some access rights

@@ -13,7 +13,7 @@ use App\Containers\{{section-name}}\{{container-name}}\Tests\ApiTestCase;
 class {{class-name}} extends ApiTestCase
 {
     // the endpoint to be called within this test (e.g., get@api/v1/users)
-    protected string $endpoint = '{{endpoint}}';
+    protected string $endpoint = 'method@endpoint';
 
     // fake some access rights
     protected array $access = [

@@ -34,10 +34,11 @@ class {{class-name}} extends WebTestCase
         $response->assertStatus(200);
         $this->assertResponseContainKeyValue([
             'object' => '{{model}}',
-            // 'key' => 'value'
+            // 'key' => $data['key'],
         ]);
         $this->assertDatabaseHas('{{table}}', [
-            // 'key' => $data['key']
+            'id' => ${{entity}}->id,
+            // 'key' => $data['key'],
         ]);
     }
 
@@ -53,9 +54,9 @@ class {{class-name}} extends WebTestCase
         $response = $this->injectId(${{entity}}->id)->makeCall($data);
 
         $response->assertStatus(403);
-        $this->assertDatabaseMissing('{{table}}', [
-            // 'key' => $data['key']
-        ]);
+        // $this->assertDatabaseMissing('{{table}}', [
+        //     'key' => $data['key']
+        // ]);
     }
 
     public function testUpdateNonExisting{{model}}(): void
