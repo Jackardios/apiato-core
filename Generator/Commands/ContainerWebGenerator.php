@@ -161,7 +161,7 @@ class ContainerWebGenerator extends GeneratorCommand implements ComponentsGenera
             [
                 'stub' => 'List',
                 'name' => 'List' . $models,
-                'operation' => 'list' . $model,
+                'operation' => 'list' . $models,
                 'verb' => 'GET',
                 'url' => $url,
                 'action' => 'List' . $models . 'Action',
@@ -278,6 +278,7 @@ class ContainerWebGenerator extends GeneratorCommand implements ComponentsGenera
             }
 
             if (isset($route['test'])) {
+                $urlWithReplacedRouteKey = Str::replace('{' . $modelRouteKey . '}', '{id}', $route['url']);
                 $this->call('apiato:generate:test:functional', [
                     '--section' => $sectionName,
                     '--container' => $containerName,
@@ -285,7 +286,7 @@ class ContainerWebGenerator extends GeneratorCommand implements ComponentsGenera
                     '--ui' => $ui,
                     '--model' => $model,
                     '--stub' => $route['stub'],
-                    '--endpoint' => Str::lower($route['verb']) . '@' . $route['url'],
+                    '--endpoint' => Str::lower($route['verb']) . '@' . $urlWithReplacedRouteKey,
                 ]);
             }
         }

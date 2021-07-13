@@ -77,7 +77,7 @@ class RouteGenerator extends GeneratorCommand implements ComponentsGenerator
 
         $docUrl = preg_replace('~\{(.+?)\}~', ':$1', $url);
 
-        $routeName = Str::lower($ui . '.' . $this->containerName . '.' . Str::snake($operation));
+        $routeName = Str::lower($ui . '.' . Str::plural(Str::snake($this->containerName)) . '.' . Str::snake($operation));
 
         // Change the stub to the currently selected UI (API / WEB)
         $this->stubName = 'routes/' . $ui . '.stub';
