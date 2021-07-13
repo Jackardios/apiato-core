@@ -49,7 +49,7 @@ class TestUnitTestGenerator extends GeneratorCommand implements ComponentsGenera
     /**
      * The name of the stub file.
      */
-    protected string $stubName = 'tests/unit/general.stub';
+    protected string $stubName = 'tests/unit/generic.stub';
 
     /**
      * @return array

@@ -166,6 +166,7 @@ class ContainerApiGenerator extends GeneratorCommand implements ComponentsGenera
                 'action' => 'List' . $models . 'Action',
                 'request' => 'List' . $models . 'Request',
                 'task' => 'List' . $models . 'Task',
+                'test' => 'List' . $models . 'Test',
             ],
             [
                 'stub' => 'View',
@@ -176,6 +177,7 @@ class ContainerApiGenerator extends GeneratorCommand implements ComponentsGenera
                 'action' => 'View' . $model . 'Action',
                 'request' => 'View' . $model . 'Request',
                 'task' => null,
+                'test' => 'View' . $model . 'Test',
             ],
             [
                 'stub' => 'Create',
@@ -186,6 +188,7 @@ class ContainerApiGenerator extends GeneratorCommand implements ComponentsGenera
                 'action' => 'Create' . $model . 'Action',
                 'request' => 'Create' . $model . 'Request',
                 'task' => 'Create' . $model . 'Task',
+                'test' => 'Create' . $model . 'Test',
             ],
             [
                 'stub' => 'Update',
@@ -196,6 +199,7 @@ class ContainerApiGenerator extends GeneratorCommand implements ComponentsGenera
                 'action' => 'Update' . $model . 'Action',
                 'request' => 'Update' . $model . 'Request',
                 'task' => 'Update' . $model . 'Task',
+                'test' => 'Update' . $model . 'Test',
             ],
             [
                 'stub' => 'Delete',
@@ -206,6 +210,7 @@ class ContainerApiGenerator extends GeneratorCommand implements ComponentsGenera
                 'action' => 'Delete' . $model . 'Action',
                 'request' => 'Delete' . $model . 'Request',
                 'task' => 'Delete' . $model . 'Task',
+                'test' => 'Delete' . $model . 'Test',
             ],
         ];
 
@@ -248,6 +253,18 @@ class ContainerApiGenerator extends GeneratorCommand implements ComponentsGenera
                     '--file' => $route['task'],
                     '--model' => $model,
                     '--stub' => $route['stub'],
+                ]);
+            }
+
+            if (isset($route['test'])) {
+                $this->call('apiato:generate:test:functional', [
+                    '--section' => $sectionName,
+                    '--container' => $containerName,
+                    '--file' => $route['test'],
+                    '--ui' => $ui,
+                    '--model' => $model,
+                    '--stub' => $route['stub'],
+                    '--endpoint' => Str::lower($route['verb']) . '@' . $route['url'],
                 ]);
             }
         }

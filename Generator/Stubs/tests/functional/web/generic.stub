@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Containers\{{section-name}}\{{container-name}}\UI\API\Tests\Functional;
+namespace App\Containers\{{section-name}}\{{container-name}}\UI\WEB\Tests\Functional;
 
-use App\Containers\{{section-name}}\{{container-name}}\Tests\ApiTestCase;
+use App\Containers\{{section-name}}\{{container-name}}\Tests\WebTestCase;
 
 /**
  * Class {{class-name}}.
  *
  * @group {{_container-name}}
- * @group api
+ * @group web
  */
-class {{class-name}} extends ApiTestCase
+class {{class-name}} extends WebTestCase
 {
-    // the endpoint to be called within this test (e.g., get@v1/users)
+    // the endpoint to be called within this test (e.g., {{endpoint}})
     protected string $endpoint = 'method@endpoint';
 
     // fake some access rights

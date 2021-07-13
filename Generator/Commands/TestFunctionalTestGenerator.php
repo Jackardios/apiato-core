@@ -17,6 +17,9 @@ class TestFunctionalTestGenerator extends GeneratorCommand implements Components
      */
     public array $inputs = [
         ['ui', null, InputOption::VALUE_OPTIONAL, 'The user-interface to generate the Test for.'],
+        ['model', 'm', InputOption::VALUE_OPTIONAL, 'The model that the test applies to.'],
+        ['stub', null, InputOption::VALUE_OPTIONAL, 'The stub file to load for this generator.'],
+        ['endpoint', 'e', InputOption::VALUE_OPTIONAL, 'The endpoint to be called within this test.'],
     ];
 
     /**
@@ -51,7 +54,7 @@ class TestFunctionalTestGenerator extends GeneratorCommand implements Components
     /**
      * The name of the stub file.
      */
-    protected string $stubName = 'tests/functional/general.stub';
+    protected string $stubName = 'tests/functional/generic.stub';
 
     /**
      * @return array
@@ -60,8 +63,26 @@ class TestFunctionalTestGenerator extends GeneratorCommand implements Components
     {
         $ui = Str::lower($this->checkParameterOrChoice('ui', 'Select the UI for the Test', ['API', 'WEB', 'CLI'], 0));
 
+        $stub = 'generic';
+        if ($ui === 'api' || $ui === 'web') {
+            $endpoint = $this->checkParameterOrAsk('endpoint', 'Enter endpoint to be called within this test.', 'method@endpoint');
+            $model = $this->checkParameterOrAsk('model', 'Enter the name of the model this action is for.');
+
+            if ($model) {
+                $models = Str::plural($model);
+                $entity = Str::camel($model);
+                $entities = Str::plural($entity);
+                $stub = Str::lower($this->checkParameterOrChoice(
+                    'stub',
+                    'Select the Stub you want to load',
+                    ['Generic', 'List', 'View', 'Create', 'Update', 'Delete'],
+                    0)
+                );
+            }
+        }
+
         // Set the stub file accordingly
-        $this->stubName = 'tests/functional/' . $ui . '.stub';
+        $this->stubName = 'tests/functional/' . $ui . '/' . $stub . '.stub';
 
         // We need to generate the TestCase class before
         $this->call('apiato:generate:test:testcase', [
@@ -83,6 +104,11 @@ class TestFunctionalTestGenerator extends GeneratorCommand implements Components
                 '_container-name' => Str::lower($this->containerName),
                 'container-name' => $this->containerName,
                 'class-name' => $this->fileName,
+                'model' => $model ?? null,
+                'models' => $models ?? null,
+                'entity' => $entity ?? null,
+                'entities' => $entities ?? null,
+                'endpoint' => $endpoint ?? null,
             ],
             'file-parameters' => [
                 'file-name' => $this->fileName,
@@ -92,6 +118,6 @@ class TestFunctionalTestGenerator extends GeneratorCommand implements Components
 
     public function getDefaultFileName(): string
     {
-        return 'DefaultFunctionalTest';
+        return 'Default' . $this->containerName . 'Test';
     }
 }
