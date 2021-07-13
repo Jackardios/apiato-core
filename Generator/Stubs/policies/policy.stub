@@ -19,7 +19,7 @@ class {{class-name}} extends Policy
      */
     public function viewAny({{user-model}} ${{user-entity}})
     {
-        //
+        return $user->can('view-{{kebab-entities}}');
     }
 
     /**
@@ -31,7 +31,7 @@ class {{class-name}} extends Policy
      */
     public function view({{user-model}} ${{user-entity}}, {{model}} ${{entity}})
     {
-        //
+        return $user->can('view-{{kebab-entities}}');
     }
 
     /**
@@ -42,7 +42,7 @@ class {{class-name}} extends Policy
      */
     public function create({{user-model}} ${{user-entity}})
     {
-        //
+        return $user->can('create-{{kebab-entities}}');
     }
 
     /**
@@ -54,7 +54,7 @@ class {{class-name}} extends Policy
      */
     public function update({{user-model}} ${{user-entity}}, {{model}} ${{entity}})
     {
-        //
+        return $user->can('update-{{kebab-entities}}');
     }
 
     /**
@@ -66,7 +66,7 @@ class {{class-name}} extends Policy
      */
     public function delete({{user-model}} ${{user-entity}}, {{model}} ${{entity}})
     {
-        //
+        return $user->can('delete-{{kebab-entities}}');
     }
 
     /**
@@ -78,7 +78,7 @@ class {{class-name}} extends Policy
      */
     public function restore({{user-model}} ${{user-entity}}, {{model}} ${{entity}})
     {
-        //
+        return $user->can('delete-{{kebab-entities}}');
     }
 
     /**
@@ -90,6 +90,6 @@ class {{class-name}} extends Policy
      */
     public function forceDelete({{user-model}} ${{user-entity}}, {{model}} ${{entity}})
     {
-        //
+        return $user->can('force-delete-{{kebab-entities}}');
     }
 }

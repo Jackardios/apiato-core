@@ -93,6 +93,7 @@ class PolicyGenerator extends GeneratorCommand implements ComponentsGenerator
         $userModelVariable = Str::camel($userModel);
 
         $entity = Str::camel($model);
+        $kebabEntities = Str::kebab(Str::plural($model));
         if ($entity === $userModelVariable) {
             $entity = 'model';
         }
@@ -110,6 +111,7 @@ class PolicyGenerator extends GeneratorCommand implements ComponentsGenerator
                 'class-name' => $this->fileName,
                 'model' => $model,
                 'entity' => $entity,
+                'kebab-entities' => $kebabEntities,
                 'namespaced-user-model' => $namespacedUserModel,
                 'user-model' => $userModel,
                 'user-entity' => $userModelVariable,
