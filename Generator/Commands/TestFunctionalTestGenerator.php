@@ -109,6 +109,7 @@ class TestFunctionalTestGenerator extends GeneratorCommand implements Components
                 'models' => $models ?? null,
                 'entity' => $entity ?? null,
                 'entities' => $entities ?? null,
+                'kebab-entities' => isset($entities) ? Str::kebab($entities) : null,
                 'table' => $table ?? null,
                 'endpoint' => $endpoint ?? null,
             ],

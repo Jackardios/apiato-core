@@ -18,7 +18,7 @@ class {{class-name}} extends WebTestCase
 
     // fake some access rights
     protected array $access = [
-        'permissions' => 'update-{{entities}}',
+        'permissions' => 'update-{{kebab-entities}}',
         'roles'       => '',
     ];
 

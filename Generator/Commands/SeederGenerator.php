@@ -4,7 +4,6 @@ namespace Apiato\Core\Generator\Commands;
 
 use Apiato\Core\Generator\GeneratorCommand;
 use Apiato\Core\Generator\Interfaces\ComponentsGenerator;
-use Illuminate\Support\Pluralizer;
 use Illuminate\Support\Str;
 use Symfony\Component\Console\Input\InputOption;
 
@@ -72,7 +71,7 @@ class SeederGenerator extends GeneratorCommand implements ComponentsGenerator
             $model = $this->checkParameterOrAsk('model', 'Enter the name of the model this action is for.', $this->containerName);
 
             $entity = Str::camel($model);
-            $entities = Pluralizer::plural($entity);
+            $entities = Str::plural($entity);
         }
 
         return [
@@ -89,6 +88,7 @@ class SeederGenerator extends GeneratorCommand implements ComponentsGenerator
                 'model' => $model ?? null,
                 'entity' => $entity ?? null,
                 'entities' => $entities ?? null,
+                'kebab-entities' => isset($entities) ? Str::kebab($entities) : null,
             ],
             'file-parameters' => [
                 'file-name' => $this->fileName,
