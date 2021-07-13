@@ -147,7 +147,7 @@ class ContainerWebGenerator extends GeneratorCommand implements ComponentsGenera
         $doctype = 'private';
 
         // get the URI and remove the first trailing slash
-        $url = Str::lower($this->checkParameterOrAsk('url', 'Enter the base URI for *all* WEB endpoints (foo/bar)', Str::lower($models)));
+        $url = Str::kebab($this->checkParameterOrAsk('url', 'Enter the base URI for *all* WEB endpoints (foo/bar)', Str::kebab($models)));
         $url = ltrim($url, '/');
 
         // generate model route key
