@@ -12,7 +12,7 @@ class {{class-name}} extends Seeder
         $createPermissionTask = app(CreatePermissionTask::class);
         $createPermissionTask->run(
             'view-{{entities}}',
-            'View {{entities}}',
+            'View any {{entities}}',
             '{{entities}}'
         );
         $createPermissionTask->run(
@@ -22,17 +22,17 @@ class {{class-name}} extends Seeder
         );
         $createPermissionTask->run(
             'update-{{entities}}',
-            'Update {{entities}}',
+            'Update any {{entities}}',
             '{{entities}}'
         );
         $createPermissionTask->run(
             'delete-{{entities}}',
-            'Delete {{entities}}',
+            'Delete any {{entities}}',
             '{{entities}}'
         );
         $createPermissionTask->run(
             'force-delete-{{entities}}',
-            'Force delete {{entities}}',
+            'Force delete any {{entities}}',
             '{{entities}}'
         );
     }
