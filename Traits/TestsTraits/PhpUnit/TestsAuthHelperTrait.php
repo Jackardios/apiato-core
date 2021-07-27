@@ -85,7 +85,7 @@ trait TestsAuthHelperTrait
         $user = $this->setupTestingUserAccess($user, $access);
 
         // authentication the user
-        $this->actingAs($user, 'api');
+        $this->actingAs($user, Config::get('apiato.tests.guard', 'api'));
 
         // set the created user
         return $this->testingUser = $user;
