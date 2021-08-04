@@ -115,14 +115,13 @@ class ContainerApiGenerator extends GeneratorCommand implements ComponentsGenera
             '--tablename' => Str::snake($models),
         ]);
 
-        // create a transformer for the model
-        $this->printInfoMessage('Generating Transformer for the Model');
-        $this->call('apiato:generate:transformer', [
+        // create a resource for the model
+        $this->printInfoMessage('Generating Resource for the Model');
+        $this->call('apiato:generate:resource', [
             '--section' => $sectionName,
             '--container' => $containerName,
-            '--file' => $model . 'Transformer',
+            '--file' => $model . 'Resource',
             '--model' => $model,
-            '--full' => false,
         ]);
 
         // create a factory for the model

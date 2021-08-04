@@ -20,6 +20,7 @@ use Apiato\Core\Generator\Commands\NotificationGenerator;
 use Apiato\Core\Generator\Commands\PolicyGenerator;
 use Apiato\Core\Generator\Commands\ReadmeGenerator;
 use Apiato\Core\Generator\Commands\RequestGenerator;
+use Apiato\Core\Generator\Commands\ResourceGenerator;
 use Apiato\Core\Generator\Commands\RouteGenerator;
 use Apiato\Core\Generator\Commands\SeederGenerator;
 use Apiato\Core\Generator\Commands\ServiceProviderGenerator;
@@ -28,7 +29,6 @@ use Apiato\Core\Generator\Commands\TaskGenerator;
 use Apiato\Core\Generator\Commands\TestFunctionalTestGenerator;
 use Apiato\Core\Generator\Commands\TestTestCaseGenerator;
 use Apiato\Core\Generator\Commands\TestUnitTestGenerator;
-use Apiato\Core\Generator\Commands\TransformerGenerator;
 use Apiato\Core\Generator\Commands\ValueGenerator;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
@@ -68,6 +68,7 @@ class GeneratorsServiceProvider extends ServiceProvider
             PolicyGenerator::class,
             ReadmeGenerator::class,
             RequestGenerator::class,
+            ResourceGenerator::class,
             RouteGenerator::class,
             SeederGenerator::class,
             ServiceProviderGenerator::class,
@@ -76,7 +77,6 @@ class GeneratorsServiceProvider extends ServiceProvider
             TestTestCaseGenerator::class,
             TestUnitTestGenerator::class,
             TaskGenerator::class,
-            TransformerGenerator::class,
             ValueGenerator::class
         ]);
     }
