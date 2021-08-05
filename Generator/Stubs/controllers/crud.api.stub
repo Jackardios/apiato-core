@@ -47,6 +47,6 @@ class {{class-name}} extends {{base-controller}}
     public function delete{{model}}(Delete{{model}}Request $request, {{model}} ${{entity}}): JsonResponse
     {
         app(Delete{{model}}Action::class)->run($request, ${{entity}});
-        return $this->deleted();
+        return $this->noContent();
     }
 }
