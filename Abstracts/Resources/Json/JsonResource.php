@@ -1,6 +1,6 @@
 <?php
 
-namespace Apiato\Core\Abstracts\Resources;
+namespace Apiato\Core\Abstracts\Resources\Json;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\JsonResource as LaravelJsonResource;

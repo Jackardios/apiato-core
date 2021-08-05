@@ -2,7 +2,7 @@
 
 namespace App\Containers\{{section-name}}\{{container-name}}\UI\API\Resources;
 
-use Illuminate\Http\Resources\Json\JsonResource;
+use App\Ship\Parents\Resources\Json\JsonResource;
 
 class {{class-name}} extends JsonResource
 {
