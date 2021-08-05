@@ -9,7 +9,7 @@ abstract class JsonResource extends LaravelJsonResource
 {
     public function created(int $status = 201): JsonResponse
     {
-        return $this->toResponse()
+        return $this->response()
                     ->setStatusCode($status);
     }
 }
