@@ -4,7 +4,7 @@ namespace Apiato\Core\Abstracts\Exceptions;
 
 use Exception as BaseException;
 use Illuminate\Support\Facades\Config;
-use Log;
+use Illuminate\Support\Facades\Log;
 
 abstract class Exception extends BaseException
 {
@@ -20,6 +20,8 @@ abstract class Exception extends BaseException
         ?BaseException $previous = null
     )
     {
+        parent::__construct($message, $code, $previous);
+
         // Detect and set the running environment
         $this->environment = Config::get('app.env');
 
@@ -44,7 +46,7 @@ abstract class Exception extends BaseException
 
     private function findStatusCode(): int
     {
-        return $this->code ?? Self::DEFAULT_STATUS_CODE;
+        return $this->code ?? self::DEFAULT_STATUS_CODE;
     }
 
     /**
@@ -62,7 +64,7 @@ abstract class Exception extends BaseException
             $error = $error->getMessage();
         }
 
-        if ($this->environment != 'testing' || $force === true) {
+        if ($this->environment !== 'testing' || $force === true) {
             Log::error('[DEBUG] ' . $error);
         }
 

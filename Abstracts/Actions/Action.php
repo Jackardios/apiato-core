@@ -2,19 +2,9 @@
 
 namespace Apiato\Core\Abstracts\Actions;
 
+use Apiato\Core\Traits\WithUITrait;
+
 abstract class Action
 {
-    protected string $ui;
-
-    public function getUI()
-    {
-        return $this->ui;
-    }
-
-    public function setUI($interface)
-    {
-        $this->ui = $interface;
-
-        return $this;
-    }
+    use WithUITrait;
 }

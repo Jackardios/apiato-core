@@ -2,7 +2,6 @@
 
 namespace Apiato\Core\Loaders;
 
-
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
