@@ -18,7 +18,7 @@ trait TestsAuthHelperTrait
     protected ?string $userClass = null;
 
     /**
-     * Roles and permissions, to be attached on the user
+     * Roles and permissions, to be attached on the user by default
      */
     protected array $access = [
         'permissions' => '',
@@ -97,9 +97,9 @@ trait TestsAuthHelperTrait
         if ($this->createUserAsAdmin) {
             $state = $this->userAdminState;
             return $user::factory()->$state()->create($this->prepareUserDetails($userDetails));
-        } else {
-            return $user::factory()->create($this->prepareUserDetails($userDetails));
         }
+
+        return $user::factory()->create($this->prepareUserDetails($userDetails));
     }
 
     private function prepareUserDetails(?array $userDetails = null): array
