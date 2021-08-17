@@ -70,7 +70,7 @@ trait RoutesLoaderTrait
         return [
             'namespace' => $controllerNamespace,
             'middleware' => $this->getMiddlewares(),
-            'domain' => $this->getApiUrl(),
+            'domain' => $this->getApiDomain(),
             // If $endpointFileOrPrefixString is a file then get the version name from the file name, else if string use that string as prefix
             'prefix' => is_string($endpointFileOrPrefixString) ? $endpointFileOrPrefixString : $this->getApiVersionPrefix($endpointFileOrPrefixString),
         ];
@@ -104,9 +104,9 @@ trait RoutesLoaderTrait
     /**
      * @return  mixed
      */
-    private function getApiUrl()
+    private function getApiDomain()
     {
-        return Config::get('apiato.api.url');
+        return Config::get('apiato.api.domain');
     }
 
     /**
