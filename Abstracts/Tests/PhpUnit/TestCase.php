@@ -16,6 +16,11 @@ abstract class TestCase extends LaravelTestCase
         RefreshDatabase;
 
     /**
+     * Determine if the seed task should be run when refreshing the database.
+     */
+    protected bool $seed = true;
+
+    /**
      * The base URL to use while testing the application.
      */
     protected string $baseUrl;
