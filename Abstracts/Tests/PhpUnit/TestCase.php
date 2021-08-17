@@ -4,14 +4,14 @@ namespace Apiato\Core\Abstracts\Tests\PhpUnit;
 
 use Apiato\Core\Traits\TestCaseTrait;
 use Apiato\Core\Traits\TestsTraits\PhpUnit\TestsAuthHelperTrait;
-use Apiato\Core\Traits\TestsTraits\PhpUnit\TestsRequestHelperTrait;
+use Apiato\Core\Traits\TestsTraits\PhpUnit\TestsUrlHelperTrait;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\TestCase as LaravelTestCase;
 
 abstract class TestCase extends LaravelTestCase
 {
     use TestCaseTrait,
-        TestsRequestHelperTrait,
+        TestsUrlHelperTrait,
         TestsAuthHelperTrait,
         RefreshDatabase;
 
