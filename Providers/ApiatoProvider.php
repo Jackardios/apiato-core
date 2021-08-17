@@ -46,6 +46,7 @@ class ApiatoProvider extends AbstractMainProvider
      */
     private function overrideLaravelBaseProviders(): void
     {
-        App::register(EventServiceProvider::class); //The custom apiato eventserviceprovider
+        // The custom apiato EventServiceProvider
+        App::register(EventServiceProvider::class);
     }
 }
