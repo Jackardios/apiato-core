@@ -22,11 +22,20 @@ trait TestsUrlHelperTrait
         return rtrim($url, '/') . $queryString;
     }
 
+    public function replaceByKeyValues(string $url, array $replaces): string
+    {
+        foreach ($replaces as $key => $value) {
+            $url = Str::replace($key, $value, $url);
+        }
+
+        return $url;
+    }
+
     public function trimSlashes($path): string {
         return trim($path, '/');
     }
 
-    public function buildUrl(string $path, array $queryParameters = []): string
+    public function buildUrl(string $path, array $queryParameters = [], array $replaces = []): string
     {
         if($this->isAbsoluteUrl($path)) {
             return $this->addQueryParametersToUrl($path, $queryParameters);
@@ -35,10 +44,14 @@ trait TestsUrlHelperTrait
         $apiDomain = $this->trimSlashes(Config::get('apiato.api.domain'));
         $url = $apiDomain.'/'.$this->trimSlashes($path);
 
+        if ($replaces) {
+            $url = $this->replaceByKeyValues($url, $replaces);
+        }
+
         return $this->addQueryParametersToUrl($url, $queryParameters);
     }
 
-    public function buildApiUrl(string $path, array $queryParameters = []): string
+    public function buildApiUrl(string $path, array $queryParameters = [], array $replaces = []): string
     {
         if($this->isAbsoluteUrl($path)) {
             return $this->addQueryParametersToUrl($path, $queryParameters);
@@ -47,6 +60,10 @@ trait TestsUrlHelperTrait
         $apiDomain = $this->trimSlashes(Config::get('apiato.api.domain'));
         $apiPrefix = $this->trimSlashes(Config::get('apiato.api.prefix'));
         $url = $apiDomain.'/'.$apiPrefix.'/'.$this->trimSlashes($path);
+
+        if ($replaces) {
+            $url = $this->replaceByKeyValues($url, $replaces);
+        }
 
         return $this->addQueryParametersToUrl($url, $queryParameters);
     }
